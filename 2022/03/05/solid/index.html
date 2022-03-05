@@ -16,21 +16,21 @@
   <meta name="author" content="Mehrdad Karami">
   <meta name="keywords" content="java">
   
-    <meta name="description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
+    <meta name="description" content="The following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependency Inversion  1. IntroductionIn this tutorial,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OnlineJavaClass">
-<meta property="og:url" content="http://example.com/2022/03/05/solid-principle/solid/index.html">
+<meta property="og:title" content="Guide to S.O.L.I.D Principles">
+<meta property="og:url" content="http://example.com/2022/03/05/solid/index.html">
 <meta property="og:site_name" content="OnlineJavaClass">
-<meta property="og:description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
+<meta property="og:description" content="The following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependency Inversion  1. IntroductionIn this tutorial,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-05T18:41:34.222Z">
-<meta property="article:modified_time" content="2022-03-05T18:41:34.222Z">
+<meta property="article:modified_time" content="2022-03-05T20:41:02.420Z">
 <meta property="article:author" content="Mehrdad Karami">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>OnlineJavaClass</title>
+  <title>Guide to S.O.L.I.D Principles - OnlineJavaClass</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="Guide to S.O.L.I.D Principles">
               
             </span>
 
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.7k 字
+      10k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      82 分钟
+      84 分钟
     </span>
   
 
@@ -235,10 +235,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">Guide to S.O.L.I.D Principles</h1>
             
             <div class="markdown-body">
-              <h2 id="Solid-Guide-to-SOLID-Principles"><a href="#Solid-Guide-to-SOLID-Principles" class="headerlink" title="Solid: Guide to SOLID Principles"></a>Solid: Guide to SOLID Principles</h2><h3 id="Usage-in-Java"><a href="#Usage-in-Java" class="headerlink" title="Usage in Java"></a>Usage in Java</h3><h4 id="The-following-5-concepts-make-up-our-SOLID-principles"><a href="#The-following-5-concepts-make-up-our-SOLID-principles" class="headerlink" title="The following 5 concepts make up our SOLID principles:"></a>The following 5 concepts make up our SOLID principles:</h4><figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> Single Responsibility<br><span class="hljs-bullet">2.</span> Open/Closed<br><span class="hljs-bullet">3.</span> Liskov Substitution<br><span class="hljs-bullet">4.</span> Interface Segregation<br><span class="hljs-bullet">5.</span> Dependency Inversion<br></code></pre></td></tr></table></figure>
+              <h4 id="The-following-5-concepts-make-up-our-SOLID-principles"><a href="#The-following-5-concepts-make-up-our-SOLID-principles" class="headerlink" title="The following 5 concepts make up our SOLID principles:"></a>The following 5 concepts make up our SOLID principles:</h4><figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> Single Responsibility<br><span class="hljs-bullet">2.</span> Open/Closed<br><span class="hljs-bullet">3.</span> Liskov Substitution<br><span class="hljs-bullet">4.</span> Interface Segregation<br><span class="hljs-bullet">5.</span> Dependency Inversion<br></code></pre></td></tr></table></figure>
 
 <h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>In this tutorial, we’ll be discussing the SOLID principles of Object-Oriented Design.</p>
 <p>First, we’ll start by exploring the reasons they came about and why we should consider them when designing software.<br>Then, we’ll outline each principle alongside some example code to emphasize the point.</p>
@@ -264,175 +264,85 @@
 <li><em><strong>Organization</strong></em> – Smaller, well-organized classes are easier to search than monolithic ones</li>
 </ol>
 <p>Take, for example, a class to represent a simple book:</p>
-<p>~<br>public class Book {</p>
-<div class="code-wrapper"><pre><code class="hljs">private String name;
-private String author;
-private String text;
-
-//constructor, getters and setters
-</code></pre></div>
-<p>}<br>~<br>In this code, we store the name, author, and text associated with an instance of a Book.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Book</span> &#123;<br> <br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String author;<br>    <span class="hljs-keyword">private</span> String text;<br> <br>    <span class="hljs-comment">//constructor, getters and setters</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>In this code, we store the name, author, and text associated with an instance of a Book.</p>
 <p>Let’s now add a couple of methods to query the text:</p>
-<p>~<br>public class Book {</p>
-<div class="code-wrapper"><pre><code class="hljs">private String name;
-private String author;
-private String text;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Book</span> &#123;<br> <br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String author;<br>    <span class="hljs-keyword">private</span> String text;<br> <br>    <span class="hljs-comment">//constructor, getters and setters</span><br> <br>    <span class="hljs-comment">// methods that directly relate to the book properties</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">replaceWordInText</span><span class="hljs-params">(String word)</span>&#123;<br>        <span class="hljs-keyword">return</span> text.replaceAll(word, text);<br>    &#125;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isWordInText</span><span class="hljs-params">(String word)</span>&#123;<br>        <span class="hljs-keyword">return</span> text.contains(word);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-//constructor, getters and setters
-
-// methods that directly relate to the book properties
-public String replaceWordInText(String word)&#123;
-    return text.replaceAll(word, text);
-&#125;
-
-public boolean isWordInText(String word)&#123;
-    return text.contains(word);
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
 <p>Now, our Book class works well, and we can store as many books as we like in our application. But, what good is storing the information if we can’t output the text to our console and read it?</p>
 <p>Let’s throw caution to the wind and add a print method:</p>
-<p>~<br>public class Book {<br>    &#x2F;&#x2F;…</p>
-<div class="code-wrapper"><pre><code class="hljs">void printTextToConsole()&#123;
-    // our code for formatting and printing the text
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
-<p>This code does, however, violate the single responsibility principle we outlined earlier. To fix our mess, we should implement a separate class that is concerned only with printing our texts:</p>
-<p>~<br>public class BookPrinter {</p>
-<div class="code-wrapper"><pre><code class="hljs">// methods for outputting text
-void printTextToConsole(String text)&#123;
-    //our code for formatting and printing the text
-&#125;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Book</span> &#123;<br>    <span class="hljs-comment">//...</span><br> <br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">printTextToConsole</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-comment">// our code for formatting and printing the text</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-void printTextToAnotherMedium(String text)&#123;
-    // code for writing to any other location..
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
+<p>This code does, however, violate the single responsibility principle we outlined earlier. To fix our mess, we should implement a separate class that is concerned only with printing our texts:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BookPrinter</span> &#123;<br> <br>    <span class="hljs-comment">// methods for outputting text</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">printTextToConsole</span><span class="hljs-params">(String text)</span>&#123;<br>        <span class="hljs-comment">//our code for formatting and printing the text</span><br>    &#125;<br> <br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">printTextToAnotherMedium</span><span class="hljs-params">(String text)</span>&#123;<br>        <span class="hljs-comment">// code for writing to any other location..</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>Awesome. Not only have we developed a class that relieves the Book of its printing duties, but we can also leverage our BookPrinter class to send our text to other media.</p>
 <p>Whether it’s email, logging, or anything else, we have a separate class dedicated to this one concern!</p>
 <h4 id="4-Open-for-Extension-Closed-for-Modification"><a href="#4-Open-for-Extension-Closed-for-Modification" class="headerlink" title="4. Open for Extension, Closed for Modification"></a>4. Open for Extension, Closed for Modification</h4><p>Now, time for the ‘O’ – more formally known as the open-closed principle. Simply put, classes should be open for extension,<br>but closed for modification.<br>In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise happy application.</p>
 <p>Of course, the one exception to the rule is when fixing bugs in existing code.</p>
 <p>Let’s explore the concept further with a quick code example. As part of a new project, imagine we’ve implemented a Guitar class.</p>
 <p>It’s fully fledged and even has a volume knob:</p>
-<p>~<br>public class Guitar {</p>
-<div class="code-wrapper"><pre><code class="hljs">private String make;
-private String model;
-private int volume;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Guitar</span> &#123;<br> <br>    <span class="hljs-keyword">private</span> String make;<br>    <span class="hljs-keyword">private</span> String model;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> volume;<br> <br>    <span class="hljs-comment">//Constructors, getters &amp; setters</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-//Constructors, getters &amp; setters
-</code></pre></div>
-<p>}<br>~</p>
 <p>We launch the application, and everyone loves it. However, after a few months, we decide the Guitar is a little bit boring and could do with an awesome flame pattern to make it look a bit more ‘rock and roll’.</p>
 <p>At this point, it might be tempting to just open up the Guitar class and add a flame pattern – but who knows what errors that might throw up in our application.</p>
 <p>Instead, let’s stick to the open-closed principle and simply extend our Guitar class:</p>
-<p>~<br>public class SuperCoolGuitarWithFlames extends Guitar {</p>
-<div class="code-wrapper"><pre><code class="hljs">private String flameColor;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SuperCoolGuitarWithFlames</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Guitar</span> &#123;<br> <br>    <span class="hljs-keyword">private</span> String flameColor;<br> <br>    <span class="hljs-comment">//constructor, getters + setters</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-//constructor, getters + setters
-</code></pre></div>
-<p>}<br>~</p>
 <p>By extending the Guitar class we can be sure that our existing application won’t be affected.</p>
 <h4 id="5-Liskov-Substitution-LSP"><a href="#5-Liskov-Substitution-LSP" class="headerlink" title="5. Liskov Substitution - LSP"></a>5. Liskov Substitution - LSP</h4><p>Next up on our list is Liskov substitution, which is arguably the most complex of the 5 principles. </p>
 <p>Simply put, <em><strong>if class A is a subtype of class B, then we should be able to replace B with A without disrupting the behavior of our program.</strong></em></p>
 <p>Let’s just jump straight to the code to help wrap our heads around this concept:</p>
-<p>~<br>public interface Vehicle {</p>
-<div class="code-wrapper"><pre><code class="hljs">void turnOnEngine();
-void accelerate();
-</code></pre></div>
-<p>}<br>~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Vehicle</span> &#123;<br> <br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">turnOnEngine</span><span class="hljs-params">()</span>;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">accelerate</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>Above, we define a simple Vehicle interface with a couple of methods that all cars should be able to fulfill – turning on the engine, and accelerating forward.</p>
 <p>Let’s implement our interface and provide some code for the methods:</p>
-<p>~<br>public class Car implements Vehicle {</p>
-<div class="code-wrapper"><pre><code class="hljs">private Engine engine;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Vehicle</span> &#123;<br> <br>    <span class="hljs-keyword">private</span> Engine engine;<br> <br>    <span class="hljs-comment">//Constructors, getters + setters</span><br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">turnOnEngine</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//turn on the engine!</span><br>        engine.on();<br>    &#125;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">accelerate</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//move forward!</span><br>        engine.powerOn(<span class="hljs-number">1000</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-//Constructors, getters + setters
-
-public void turnOnEngine() &#123;
-    //turn on the engine!
-    engine.on();
-&#125;
-
-public void accelerate() &#123;
-    //move forward!
-    engine.powerOn(1000);
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
 <p>As our code describes, we have an engine that we can turn on, and we can increase the power. But wait, its 2020 and we are now using bikes as a vehicle too! </p>
-<p>~<br>public class Bike implements Vehicle {</p>
-<div class="code-wrapper"><pre><code class="hljs">public void turnOnEngine() &#123;
-    throw new AssertionError(&quot;I don&#39;t have an engine!&quot;);
-&#125;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Bike</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Vehicle</span> &#123;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">turnOnEngine</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AssertionError</span>(<span class="hljs-string">&quot;I don&#x27;t have an engine!&quot;</span>);<br>    &#125;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">accelerate</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//this acceleration is crazy!</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-public void accelerate() &#123;
-    //this acceleration is crazy!
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
 <p>By throwing a bike without an engine into the mix, we are inherently changing the behavior of our program.<br>This is a blatant <em><strong>violation of Liskov substitution and is a bit harder to fix than our previous 2 principles.</strong></em></p>
 <p>One possible solution would be to rework our model into interfaces that take into account the engine-less state of our Vehicle.</p>
 <p>I would rewire them with another example to satisfy Mr. Liskov in <a target="_blank" href="#/lsp">this article</a> separately, make sure to check it out.</p>
 <h4 id="6-Interface-Segregation"><a href="#6-Interface-Segregation" class="headerlink" title="6. Interface Segregation"></a>6. Interface Segregation</h4><p>The ‘I ‘ in SOLID stands for interface segregation, and it simply means that larger interfaces should be split into smaller ones.<br>It states that no client should be forced to depend on methods it does not use.<br>By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.</p>
 <p>For this example, we’re going to try our hands as zookeepers. And more specifically, we’ll be working in the bear enclosure.</p>
 <p>Let’s start with an interface that outlines our roles as a bear keeper:</p>
-<p>~<br>public interface BearKeeper {<br>    void washTheBear();<br>    void feedTheBear();<br>    void petTheBear();<br>}<br>~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BearKeeper</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">washTheBear</span><span class="hljs-params">()</span>;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">feedTheBear</span><span class="hljs-params">()</span>;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">petTheBear</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>As avid zookeepers, we’re more than happy to wash and feed our beloved bears. However, we’re all too aware of the dangers of petting them.<br>Unfortunately, our interface is rather large, and we have no choice than to implement the code to pet the bear.</p>
 <p>Let’s fix this by splitting our large interface into 3 separate ones:</p>
-<p>~<br>public interface BearCleaner {<br>    void washTheBear();<br>}<br>~</p>
-<p>~<br>public interface BearFeeder {<br>    void feedTheBear();<br>}<br>~</p>
-<p>~<br>public interface BearPetter {<br>    void petTheBear();<br>}<br>~</p>
-<p>Now, thanks to interface segregation, we’re free to implement only the methods that matter to us:</p>
-<p>~<br>public class BearCarer implements BearCleaner, BearFeeder {</p>
-<div class="code-wrapper"><pre><code class="hljs">public void washTheBear() &#123;
-    //I think we missed a spot...
-&#125;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BearCleaner</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">washTheBear</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-public void feedTheBear() &#123;
-    //Tuna Tuesdays...
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BearFeeder</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">feedTheBear</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BearPetter</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">petTheBear</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Now, thanks to interface segregation, we’re free to implement only the methods that matter to us:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BearCarer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">BearCleaner</span>, BearFeeder &#123;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">washTheBear</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//I think we missed a spot...</span><br>    &#125;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">feedTheBear</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//Tuna Tuesdays...</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>And finally, we can leave the dangerous stuff to the crazy people:</p>
-<p>~<br>public class CrazyPerson implements BearPetter {</p>
-<div class="code-wrapper"><pre><code class="hljs">public void petTheBear() &#123;
-    //Good luck with that!
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CrazyPerson</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">BearPetter</span> &#123;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">petTheBear</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//Good luck with that!</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h4 id="7-Dependency-Inversion"><a href="#7-Dependency-Inversion" class="headerlink" title="7. Dependency Inversion"></a>7. Dependency Inversion</h4><p><em><strong>The principle of Dependency Inversion refers to the decoupling of software modules.<br>This way, instead of high-level modules depending on low-level modules, both will depend on abstractions.</strong></em></p>
 <p>To demonstrate this, let’s go old-school and bring to life a Windows 98 computer with code:</p>
-<p>~<br>public class Windows98Machine {}<br>~</p>
-<p>But what good is a computer without a monitor and keyboard? Let’s add one of each to our constructor so that every Windows98Computer we instantiate comes pre-packed with a Monitor and a StandardKeyboard:</p>
-<p>~<br>public class Windows98Machine {</p>
-<div class="code-wrapper"><pre><code class="hljs">private final StandardKeyboard keyboard;
-private final Monitor monitor;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Windows98Machine</span> &#123;&#125;<br></code></pre></td></tr></table></figure>
 
-public Windows98Machine() &#123;
-    monitor = new Monitor();
-    keyboard = new StandardKeyboard();
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
+<p>But what good is a computer without a monitor and keyboard? Let’s add one of each to our constructor so that every Windows98Computer we instantiate comes pre-packed with a Monitor and a StandardKeyboard:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Windows98Machine</span> &#123;<br> <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> StandardKeyboard keyboard;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Monitor monitor;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Windows98Machine</span><span class="hljs-params">()</span> &#123;<br>        monitor = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Monitor</span>();<br>        keyboard = <span class="hljs-keyword">new</span> <span class="hljs-title class_">StandardKeyboard</span>();<br>    &#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>This code will work, and we’ll be able to use the <em><strong>StandardKeyboard</strong></em> and <em><strong>Monitor</strong></em> freely within our <em><strong>Windows98Computer</strong></em> class.<br>Problem solved? <em><strong>Not quite</strong></em>. By declaring the <em><strong>StandardKeyboard</strong></em> and <em><strong>Monitor</strong></em> with the new keyword, we’ve tightly coupled these 3 classes together.</p>
 <p>Not only does this make our Windows98Computer hard to test, but we’ve also lost the ability to switch out our <em><strong>StandardKeyboard</strong></em><br>class with a different one should the need arise. And we’re stuck with our <em><strong>Monitor</strong></em> class, too.</p>
 <p>Let’s decouple our machine from the <em><strong>StandardKeyboard</strong></em> by adding a more general <em><strong>Keyboard</strong></em> interface and using this in our class:</p>
-<p>~<br>public interface Keyboard { }<br>~</p>
-<p>And now by using <strong>Keyboard</strong> we can would allow <strong>Windows98Machine</strong> substitute any type of <strong>Keyboard</strong>  </p>
-<p>~<br>public class Windows98Machine{</p>
-<div class="code-wrapper"><pre><code class="hljs">private final Keyboard keyboard;
-private final Monitor monitor;
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Keyboard</span> &#123; &#125;<br></code></pre></td></tr></table></figure>
 
-public Windows98Machine(Keyboard keyboard, Monitor monitor) &#123;
-    this.keyboard = keyboard;
-    this.monitor = monitor;
-&#125;
-</code></pre></div>
-<p>}<br>~</p>
+<p>And now by using <strong>Keyboard</strong> we can would allow <strong>Windows98Machine</strong> substitute any type of <strong>Keyboard</strong>  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Windows98Machine</span>&#123;<br> <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Keyboard keyboard;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Monitor monitor;<br> <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Windows98Machine</span><span class="hljs-params">(Keyboard keyboard, Monitor monitor)</span> &#123;<br>        <span class="hljs-built_in">this</span>.keyboard = keyboard;<br>        <span class="hljs-built_in">this</span>.monitor = monitor;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>Here, we’re using the dependency injection pattern here to facilitate adding the Keyboard dependency into the Windows98Machine class.</p>
 <p>Let’s also modify our StandardKeyboard class to implement the Keyboard interface so that it’s suitable for injecting into the Windows98Machine class:</p>
-<p>~<br>public class StandardKeyboard implements Keyboard { }<br>~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StandardKeyboard</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Keyboard</span> &#123; <br><br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>Now our classes are decoupled and communicate through the Keyboard abstraction. If we want, we can easily switch out the type of keyboard in our machine with a different implementation of the interface. We can follow the same principle for the Monitor class.</p>
 <p>Excellent! We’ve decoupled the dependencies and are free to test our Windows98Machine with whichever testing framework we choose.</p>
 
@@ -455,7 +365,7 @@ public Windows98Machine(Keyboard keyboard, Monitor monitor) &#123;
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/05/solid-principle/lsp/">
+                      <a href="/2022/03/05/java-features/java8/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Previous</span>
@@ -465,8 +375,8 @@ public Windows98Machine(Keyboard keyboard, Monitor monitor) &#123;
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/05/structures/dfs/">
-                        <span class="hidden-mobile">Depth First Search - DFS</span>
+                      <a href="/2022/03/05/solid-principle/lsp/">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
