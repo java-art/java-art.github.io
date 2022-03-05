@@ -16,20 +16,8 @@ jobs:
           node-version: 12
       - run: npm i
       - run: npm ci
-      - run: gulp
-
-      - name: Commit files
-        run: |
-          git config --local user.name  ${{ github.actor }}
-          cp -r deployment/* .
-          rm -rf src
-          rm -rf gulp-plugins
-          rm -rf webpack.config.js
-          rm -rf package.json
-          rm -rf package-lock.json
-          rm -rf gulpfile.js
-          rm -rf .eslintrc
-          git add . && git commit -m "deployment done"
+      - run: npm i -g hexo
+      - run: hexo deploy      
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
