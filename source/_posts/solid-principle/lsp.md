@@ -382,7 +382,7 @@ paymentProcessor.process(order, card);
 
 #### Here is the final class diagram
 
-![final-class-diagram](data/solid-principle/ldp-bank-class-diagram.png)
+![final-class-diagram](raw/master/data/solid-principle/ldp-bank-class-diagram.png)
 
 
 #### Advantages of the New Design
