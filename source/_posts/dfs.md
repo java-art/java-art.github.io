@@ -50,19 +50,19 @@ The pseudo code for DFS is like below:
 
 ##### G: Graph, v: starting node (can be root node) , vertex: node, vertices: nodes
  
-~
+```javascript
 dfs(G, v):
     label v as discovered
     for all vertices connected to v
         check vertex is not visited before?
             call dfs(G,vertex)
-~ 
+```
 
 Note that recursive calling acts like a Stack for us.If we want to have iterative approach we will need a stack.
 Below is the non-recursive implementation or iterative approach for the above pseudo code.
 
  
-~
+```javascript
 dfs(G, v):
     define a stack 
     put v into stack
@@ -71,7 +71,7 @@ dfs(G, v):
         label v as discovered
         for all vertices connected to v
             push vertex into stack
-~ 
+```
 
 Imagine we have tree (sort of a simple graph), then you can see the below action when you run the algo against this tree:  
 
@@ -88,14 +88,14 @@ There are two ways to implement the DFS:
   
 I will implement the recursive approach.
 
-~
+```javascript
 
-~
+```
 
 
 I will implement the iterative approach.
 
-~
+```javascript
 import java.util.Stack;
 
 public class DFS {
@@ -215,12 +215,12 @@ public class DFS {
     }
 }
 
-~
+```
 
 
 Another example using Graph
 
-~
+```javascript
 
 public class DepthFirstSearch {
 
@@ -279,6 +279,4 @@ public class DepthFirstSearch {
         }
     }
 }
-~
- 
-
+```

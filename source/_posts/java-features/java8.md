@@ -45,7 +45,3 @@ Specially when we deal with data and arrays and need to play with data to make
 some meaningful info, Java 8 helps us to get rid of complexity of huge classic 
 code architecture and as a result lees error prune codes.
 
-
-### Java features:
-
-

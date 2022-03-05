@@ -1,6 +1,6 @@
-## Solid: Guide to SOLID Principles 
-### Usage in Java  
-
+---
+title: Guide to S.O.L.I.D Principles 
+---
 #### The following 5 concepts make up our SOLID principles:
 
 ```
@@ -17,19 +17,19 @@ In this tutorial, we'll be discussing the SOLID principles of Object-Oriented De
 First, we'll start by exploring the reasons they came about and why we should consider them when designing software. 
 Then, we'll outline each principle alongside some example code to emphasize the point.
 
-I specially want to discuss this before anything else, since this is a principle for designing a good high quality software.
-You may encounter with this principle before or even wrote codes solidly! But one may wonder what are those other principles 
-to observe and have pretty good software design. Specially I want to discuss this in Java and how we do those pricipals.
+I specially want to , since this is a principle for designing a good high quality software.
+You may encounter with this principle before or even wrote codes solidly! But one may wonder what are those other principles to observe and have pretty good software design. Specially I want to discuss this in Java and how we do those pricipals.
 
 #### 2. The Reason for SOLID Principles    
 
 The SOLID principles were first conceptualized by Robert C. Martin in his 2000 paper, Design Principles and Design Patterns. 
 These concepts were later built upon by Michael Feathers, who introduced us to the SOLID acronym and in the last 20 years, these 5 principles have revolutionized the world of object-oriented programming, changing the way that we write software.
 
-So, what is SOLID and how does it help us write better code? Simply put, Martin's and Feathers' 
+So, what is SOLID and how does it help us write better code? Simply put
 
 ```
-design principles encourage us to create more maintainable, understandable, and flexible software. Consequently, as our applications grow in size, we can reduce their complexity and save ourselves a lot of headaches further down the road!
+design principles encourage us to create more maintainable, understandable, and flexible software. 
+Consequently, as our applications grow in size, we can reduce their complexity and save ourselves a lot of headaches further down the road!
 ```
 
 The following 5 concepts make up our SOLID principles:
@@ -43,7 +43,6 @@ The following 5 concepts make up our SOLID principles:
 While some of these words may sound scary!, they can be easily understood with some simple code examples. 
 In the following sections, I'll take a deep dive into what each of these principles means, along with a quick Java example to illustrate each one.
 
-
 #### 3. Single Responsibility
 
 Let's kick things off with the single responsibility principle. As we might expect, this principle states that ***a class should only have one responsibility. Furthermore, it should only have one reason to change.***
@@ -56,7 +55,7 @@ How does this principle help us to build better software? Let's see a few of its
 
 Take, for example, a class to represent a simple book:
 
-~
+```java
 public class Book {
  
     private String name;
@@ -65,12 +64,12 @@ public class Book {
  
     //constructor, getters and setters
 }
-~
+```
 In this code, we store the name, author, and text associated with an instance of a Book.
 
 Let's now add a couple of methods to query the text:
 
-~
+```java
 public class Book {
  
     private String name;
@@ -88,13 +87,13 @@ public class Book {
         return text.contains(word);
     }
 }
-~
+```
 
 Now, our Book class works well, and we can store as many books as we like in our application. But, what good is storing the information if we can't output the text to our console and read it?
 
 Let's throw caution to the wind and add a print method:
 
-~
+```java
 public class Book {
     //...
  
@@ -102,11 +101,11 @@ public class Book {
         // our code for formatting and printing the text
     }
 }
-~
+```
 
 This code does, however, violate the single responsibility principle we outlined earlier. To fix our mess, we should implement a separate class that is concerned only with printing our texts:
 
-~
+```java
 public class BookPrinter {
  
     // methods for outputting text
@@ -118,7 +117,7 @@ public class BookPrinter {
         // code for writing to any other location..
     }
 }
-~
+```
 
 Awesome. Not only have we developed a class that relieves the Book of its printing duties, but we can also leverage our BookPrinter class to send our text to other media.
 
@@ -137,7 +136,7 @@ Let's explore the concept further with a quick code example. As part of a new pr
 
 It's fully fledged and even has a volume knob:
 
-~
+```java
 public class Guitar {
  
     private String make;
@@ -146,7 +145,7 @@ public class Guitar {
  
     //Constructors, getters & setters
 }
-~
+```
 
 We launch the application, and everyone loves it. However, after a few months, we decide the Guitar is a little bit boring and could do with an awesome flame pattern to make it look a bit more ‘rock and roll'.
 
@@ -154,14 +153,14 @@ At this point, it might be tempting to just open up the Guitar class and add a f
 
 Instead, let's stick to the open-closed principle and simply extend our Guitar class:
 
-~
+```java
 public class SuperCoolGuitarWithFlames extends Guitar {
  
     private String flameColor;
  
     //constructor, getters + setters
 }
-~
+```
 
 By extending the Guitar class we can be sure that our existing application won't be affected.
 
@@ -173,19 +172,19 @@ Simply put, ***if class A is a subtype of class B, then we should be able to rep
 
 Let's just jump straight to the code to help wrap our heads around this concept:
 
-~
+```java
 public interface Vehicle {
  
     void turnOnEngine();
     void accelerate();
 }
-~
+```
 
 Above, we define a simple Vehicle interface with a couple of methods that all cars should be able to fulfill – turning on the engine, and accelerating forward.
 
 Let's implement our interface and provide some code for the methods:
 
-~
+```java
 public class Car implements Vehicle {
  
     private Engine engine;
@@ -202,11 +201,11 @@ public class Car implements Vehicle {
         engine.powerOn(1000);
     }
 }
-~
+```
 
 As our code describes, we have an engine that we can turn on, and we can increase the power. But wait, its 2020 and we are now using bikes as a vehicle too! 
 
-~
+```java
 public class Bike implements Vehicle {
  
     public void turnOnEngine() {
@@ -217,7 +216,7 @@ public class Bike implements Vehicle {
         //this acceleration is crazy!
     }
 }
-~
+```
 
 By throwing a bike without an engine into the mix, we are inherently changing the behavior of our program.
 This is a blatant ***violation of Liskov substitution and is a bit harder to fix than our previous 2 principles.***
@@ -235,40 +234,40 @@ For this example, we're going to try our hands as zookeepers. And more specifica
 
 Let's start with an interface that outlines our roles as a bear keeper:
 
-~
+```java
 public interface BearKeeper {
     void washTheBear();
     void feedTheBear();
     void petTheBear();
 }
-~
+```
 
 As avid zookeepers, we're more than happy to wash and feed our beloved bears. However, we're all too aware of the dangers of petting them.
 Unfortunately, our interface is rather large, and we have no choice than to implement the code to pet the bear.
 
 Let's fix this by splitting our large interface into 3 separate ones:
 
-~
+```java
 public interface BearCleaner {
     void washTheBear();
 }
-~
+```
 
-~
+```java
 public interface BearFeeder {
     void feedTheBear();
 }
-~
+```
 
-~ 
+```java
 public interface BearPetter {
     void petTheBear();
 }
-~
+```
 
 Now, thanks to interface segregation, we're free to implement only the methods that matter to us:
 
-~
+```java
 public class BearCarer implements BearCleaner, BearFeeder {
  
     public void washTheBear() {
@@ -279,18 +278,18 @@ public class BearCarer implements BearCleaner, BearFeeder {
         //Tuna Tuesdays...
     }
 }
-~
+```
 
 And finally, we can leave the dangerous stuff to the crazy people:
 
-~
+```java
 public class CrazyPerson implements BearPetter {
  
     public void petTheBear() {
         //Good luck with that!
     }
 }
-~
+```
 
 #### 7. Dependency Inversion
 
@@ -300,13 +299,13 @@ This way, instead of high-level modules depending on low-level modules, both wil
 
 To demonstrate this, let's go old-school and bring to life a Windows 98 computer with code:
 
-~
+```java
 public class Windows98Machine {}
-~
+```
 
 But what good is a computer without a monitor and keyboard? Let's add one of each to our constructor so that every Windows98Computer we instantiate comes pre-packed with a Monitor and a StandardKeyboard:
 
-~
+```java
 public class Windows98Machine {
  
     private final StandardKeyboard keyboard;
@@ -318,7 +317,7 @@ public class Windows98Machine {
     }
  
 }
-~
+```
 
 This code will work, and we'll be able to use the ***StandardKeyboard*** and ***Monitor*** freely within our ***Windows98Computer*** class.
 Problem solved? ***Not quite***. By declaring the ***StandardKeyboard*** and ***Monitor*** with the new keyword, we've tightly coupled these 3 classes together.
@@ -328,13 +327,13 @@ class with a different one should the need arise. And we're stuck with our ***Mo
 
 Let's decouple our machine from the ***StandardKeyboard*** by adding a more general ***Keyboard*** interface and using this in our class:
 
-~
+```java
 public interface Keyboard { }
-~
+```
 
 And now by using **Keyboard** we can would allow **Windows98Machine** substitute any type of **Keyboard**  
 
-~
+```java
 public class Windows98Machine{
  
     private final Keyboard keyboard;
@@ -345,16 +344,18 @@ public class Windows98Machine{
         this.monitor = monitor;
     }
 }
-~
+```
 
 Here, we're using the dependency injection pattern here to facilitate adding the Keyboard dependency into the Windows98Machine class.
 
 Let's also modify our StandardKeyboard class to implement the Keyboard interface so that it's suitable for injecting into the Windows98Machine class:
 
 
-~
-public class StandardKeyboard implements Keyboard { }
-~
+```java
+public class StandardKeyboard implements Keyboard { 
+
+}
+```
 
 Now our classes are decoupled and communicate through the Keyboard abstraction. If we want, we can easily switch out the type of keyboard in our machine with a different implementation of the interface. We can follow the same principle for the Monitor class.
 

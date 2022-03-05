@@ -1,5 +1,6 @@
-### Liskov Substitution Principle Explained
-
+---
+title: Liskov Substitution Principle Explained
+---
 This article gives a quick intro to the Liskov Substitution Principle (LSP), why it’s important, and how to use it to validate object-oriented designs. We’ll also see some examples and learn how to correctly identify and fix violations of the LSP.
 
 ### What is the LSP?
@@ -8,7 +9,7 @@ At a high level, the LSP states that in an object-oriented program, if we substi
 
 Say we had a method that used a superclass object reference to do something:
 
-~
+```java
 class SomeClass {
   
   void aMethod(SuperClass superClassReference) {
@@ -17,7 +18,7 @@ class SomeClass {
   
   // definition of doSomething() omitted
 }
-~
+```
 
 This should work as expected for every possible subclass object of SuperClass that is passed to it. If substituting a superclass object with a subclass object changes the program behavior in unexpected ways, the LSP is violated.
 
@@ -65,7 +66,7 @@ While some basic validations are required on all cards, there are additional val
 
 Given these requirements, we might model our classes as below:
 
-~
+```java
 abstract class PaymentInstrument {
   String name;
   String cardNumber;
@@ -90,9 +91,9 @@ abstract class PaymentInstrument {
     // the payment gateway response
   }  
 }
-~
+```
 
-~
+```java
 class CreditCard extends PaymentInstrument {
 
   @Override
@@ -102,17 +103,17 @@ class CreditCard extends PaymentInstrument {
   }  
   // other credit card-specific code
 }
-~
+```
 
-~
+```java
 class DebitCard extends PaymentInstrument { 
   // debit card-specific code
 }
-~
+```
 
 A different area in our codebase where we process a payment might look something like this:
 
-~
+```java
 class PaymentProcessor {
   void process(OrderDetails orderDetails, PaymentInstrument paymentInstrument) {
     try {
@@ -132,7 +133,7 @@ class PaymentProcessor {
     // save fingerprint and order details in DB
   }
 }
-~
+```
 
 Of course, in an actual production system, there would be many complex aspects to handle. The single processor class above might well be a bunch of classes in multiple packages across service and repository layers.
 
@@ -162,25 +163,25 @@ Let’s revisit the design and create supertype abstractions only if they are ge
 
 To start with, what we can be sure of is that our application needs to collect payment - both at present and in the future. It’s also reasonable to think that we would want to validate whatever payment details we collect. Almost everything else could change. So let’s define the below interfaces:
 
-~
+```java
 interface PaymentInstrument{
   void validate() throws PaymentInstrumentInvalidException;
   PaymentResponse collectPayment() throws PaymentFailedException;
 }
-~
+```
 
-~
+```java
 class PaymentResponse {
   String identifier;
 }
-~
+```
 
 **PaymentResponse** encapsulates an **identifier** - this could be the fingerprint for credit and debit cards or the card number for rewards cards. 
 It could be something else for a different payment instrument in the future. The encapsulation ensures **PaymentInstrument** can remain unchanged if future payment instruments have more data.
 
 **PaymentProcessor** class now looks like this:
 
-~
+```java
 class PaymentProcessor {
   void process(
       OrderDetails orderDetails, 
@@ -198,40 +199,40 @@ class PaymentProcessor {
     // save the identifier and order details in DB
   }
 }
-~
+```
 
 There are no **runFraudChecks()** and **sendToPaymentGateway()** calls in **PaymentProcessor** anymore - these are not general enough to apply to all payment instruments.
 
 Let’s add a few more interfaces for other concepts which seem general enough in our problem domain:
 
 
-~
+```java
 interface FraudChecker {
   void runChecks() throws FraudDetectedException;
 }
-~
+```
 
-~
+```java
 interface PaymentGatewayHandler {
   PaymentGatewayResponse handlePayment() throws PaymentFailedException;
 }
-~
+```
 
-~
+```java
 interface PaymentInstrumentValidator {
   void validate() throws PaymentInstrumentInvalidException;
 }
-~
+```
 
-~
+```java
 class PaymentGatewayResponse {
   String fingerprint;
 }
-~
+```
 
 And here are the implementations:
 
-~
+```java
 class ThirdPartyFraudChecker implements FraudChecker {
   // members omitted
   
@@ -240,9 +241,9 @@ class ThirdPartyFraudChecker implements FraudChecker {
     // external system call omitted
   }
 }
-~
+```
 
-~
+```java
 class PaymentGatewayHandler implements PaymentGatewayHandler {
   // members omitted
   
@@ -252,9 +253,9 @@ class PaymentGatewayHandler implements PaymentGatewayHandler {
     // received from PG on a PaymentGatewayResponse and return
   }
 }
-~
+```
 
-~
+```java
 class BankCardBasicValidator implements PaymentInstrumentValidator {
   // members like name, cardNumber etc. omitted
 
@@ -267,12 +268,12 @@ class BankCardBasicValidator implements PaymentInstrumentValidator {
     // other basic validations
   }
 }
-~
+```
 
 Let’s build **CreditCard** and **DebitCard** abstractions by composing the above building blocks in different ways. 
 We first define a class that implements **PaymentInstrument**:
 
-~
+```java
 abstract class BaseBankCard implements PaymentInstrument {
   // members like name, cardNumber etc. omitted
   // below dependencies will be injected at runtime
@@ -298,11 +299,10 @@ abstract class BaseBankCard implements PaymentInstrument {
     return response;
   }
 }
+```
 
-~
 
-
-~
+```java
 class CreditCard extends BaseBankCard {
   // constructor omitted
   
@@ -312,19 +312,19 @@ class CreditCard extends BaseBankCard {
     // additional validations for credit cards
   }
 }
-~
+```
 
-~
+```java
 class DebitCard extends BaseBankCard {
   // constructor omitted
 }
-~
+```
 
 Though **CreditCard** and **DebitCard** extend a class, it’s not the same as before. 
 Other areas of our codebase now depend only on the **PaymentInstrument** interface, not on **BaseBankCard**. 
 Below snippet shows **CreditCard** object creation and processing:
 
-~
+```java
 PaymentGatewayHandler gatewayHandler = 
   new PaymentGatewayHandler(name, cardNum, code, expiryDate);
 
@@ -345,12 +345,12 @@ CreditCard card =
     gatewayHandler);
 
 paymentProcessor.process(order, card);
-~
+```
 
 Our design is now **flexible enough** to let us add a **RewardsCard** - no force-fitting and no conditional checks. 
 We just add the new class and it works as expected.
 
-~
+```java
 class RewardsCard implements PaymentInstrument {
   String name;
   String cardNumber;
@@ -369,15 +369,15 @@ class RewardsCard implements PaymentInstrument {
     return response;
   }
 }
-~
+```
 
 And here’s client code using the new card:
 
 
-~
+```java
 RewardsCard card = new RewardsCard(name, cardNum);
 paymentProcessor.process(order, card);
-~
+```
 
 
 #### Here is the final class diagram
