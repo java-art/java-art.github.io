@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>OnlineJavaClass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OnlineJavaClass">
+<meta property="og:url" content="http://example.com/2022/03/05/solid-principle/solid/index.html">
+<meta property="og:site_name" content="OnlineJavaClass">
+<meta property="og:description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-05T18:33:18.058Z">
+<meta property="article:modified_time" content="2022-03-05T18:33:18.058Z">
+<meta property="article:author" content="Mehrdad Karami">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="OnlineJavaClass" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">OnlineJavaClass</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">online java class</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-solid-principle/solid" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/05/solid-principle/solid/" class="article-date">
+  <time class="dt-published" datetime="2022-03-05T18:33:18.058Z" itemprop="datePublished">2022-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Solid-Guide-to-SOLID-Principles"><a href="#Solid-Guide-to-SOLID-Principles" class="headerlink" title="Solid: Guide to SOLID Principles"></a>Solid: Guide to SOLID Principles</h2><h3 id="Usage-in-Java"><a href="#Usage-in-Java" class="headerlink" title="Usage in Java"></a>Usage in Java</h3><h4 id="The-following-5-concepts-make-up-our-SOLID-principles"><a href="#The-following-5-concepts-make-up-our-SOLID-principles" class="headerlink" title="The following 5 concepts make up our SOLID principles:"></a>The following 5 concepts make up our SOLID principles:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. Single Responsibility</span><br><span class="line">2. Open/Closed</span><br><span class="line">3. Liskov Substitution</span><br><span class="line">4. Interface Segregation</span><br><span class="line">5. Dependency Inversion</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>In this tutorial, we’ll be discussing the SOLID principles of Object-Oriented Design.</p>
+<p>First, we’ll start by exploring the reasons they came about and why we should consider them when designing software.<br>Then, we’ll outline each principle alongside some example code to emphasize the point.</p>
+<p>I specially want to discuss this before anything else, since this is a principle for designing a good high quality software.<br>You may encounter with this principle before or even wrote codes solidly! But one may wonder what are those other principles<br>to observe and have pretty good software design. Specially I want to discuss this in Java and how we do those pricipals.</p>
+<h4 id="2-The-Reason-for-SOLID-Principles"><a href="#2-The-Reason-for-SOLID-Principles" class="headerlink" title="2. The Reason for SOLID Principles"></a>2. The Reason for SOLID Principles</h4><p>The SOLID principles were first conceptualized by Robert C. Martin in his 2000 paper, Design Principles and Design Patterns.<br>These concepts were later built upon by Michael Feathers, who introduced us to the SOLID acronym and in the last 20 years, these 5 principles have revolutionized the world of object-oriented programming, changing the way that we write software.</p>
+<p>So, what is SOLID and how does it help us write better code? Simply put, Martin’s and Feathers’ </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">design principles encourage us to create more maintainable, understandable, and flexible software. Consequently, as our applications grow in size, we can reduce their complexity and save ourselves a lot of headaches further down the road!</span><br></pre></td></tr></table></figure>
+
+<p>The following 5 concepts make up our SOLID principles:</p>
+<ol>
+<li><em><strong>S</strong></em>ingle Responsibility</li>
+<li><em><strong>O</strong></em>pen&#x2F;Closed</li>
+<li><em><strong>L</strong></em>iskov Substitution</li>
+<li><em><strong>I</strong></em>nterface Segregation</li>
+<li><em><strong>D</strong></em>ependency Inversion</li>
+</ol>
+<p>While some of these words may sound scary!, they can be easily understood with some simple code examples.<br>In the following sections, I’ll take a deep dive into what each of these principles means, along with a quick Java example to illustrate each one.</p>
+<h4 id="3-Single-Responsibility"><a href="#3-Single-Responsibility" class="headerlink" title="3. Single Responsibility"></a>3. Single Responsibility</h4><p>Let’s kick things off with the single responsibility principle. As we might expect, this principle states that <em><strong>a class should only have one responsibility. Furthermore, it should only have one reason to change.</strong></em></p>
+<p>How does this principle help us to build better software? Let’s see a few of its benefits:</p>
+<ol>
+<li><em><strong>Testing</strong></em> – A class with one responsibility will have far fewer test cases</li>
+<li><em><strong>Lower coupling</strong></em> – Less functionality in a single class will have fewer dependencies</li>
+<li><em><strong>Organization</strong></em> – Smaller, well-organized classes are easier to search than monolithic ones</li>
+</ol>
+<p>Take, for example, a class to represent a simple book:</p>
+<p>~<br>public class Book {</p>
+<pre><code>private String name;
+private String author;
+private String text;
+
+//constructor, getters and setters
+</code></pre>
+<p>}<br>~<br>In this code, we store the name, author, and text associated with an instance of a Book.</p>
+<p>Let’s now add a couple of methods to query the text:</p>
+<p>~<br>public class Book {</p>
+<pre><code>private String name;
+private String author;
+private String text;
+
+//constructor, getters and setters
+
+// methods that directly relate to the book properties
+public String replaceWordInText(String word)&#123;
+    return text.replaceAll(word, text);
+&#125;
+
+public boolean isWordInText(String word)&#123;
+    return text.contains(word);
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>Now, our Book class works well, and we can store as many books as we like in our application. But, what good is storing the information if we can’t output the text to our console and read it?</p>
+<p>Let’s throw caution to the wind and add a print method:</p>
+<p>~<br>public class Book {<br>    &#x2F;&#x2F;…</p>
+<pre><code>void printTextToConsole()&#123;
+    // our code for formatting and printing the text
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>This code does, however, violate the single responsibility principle we outlined earlier. To fix our mess, we should implement a separate class that is concerned only with printing our texts:</p>
+<p>~<br>public class BookPrinter {</p>
+<pre><code>// methods for outputting text
+void printTextToConsole(String text)&#123;
+    //our code for formatting and printing the text
+&#125;
+
+void printTextToAnotherMedium(String text)&#123;
+    // code for writing to any other location..
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>Awesome. Not only have we developed a class that relieves the Book of its printing duties, but we can also leverage our BookPrinter class to send our text to other media.</p>
+<p>Whether it’s email, logging, or anything else, we have a separate class dedicated to this one concern!</p>
+<h4 id="4-Open-for-Extension-Closed-for-Modification"><a href="#4-Open-for-Extension-Closed-for-Modification" class="headerlink" title="4. Open for Extension, Closed for Modification"></a>4. Open for Extension, Closed for Modification</h4><p>Now, time for the ‘O’ – more formally known as the open-closed principle. Simply put, classes should be open for extension,<br>but closed for modification.<br>In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise happy application.</p>
+<p>Of course, the one exception to the rule is when fixing bugs in existing code.</p>
+<p>Let’s explore the concept further with a quick code example. As part of a new project, imagine we’ve implemented a Guitar class.</p>
+<p>It’s fully fledged and even has a volume knob:</p>
+<p>~<br>public class Guitar {</p>
+<pre><code>private String make;
+private String model;
+private int volume;
+
+//Constructors, getters &amp; setters
+</code></pre>
+<p>}<br>~</p>
+<p>We launch the application, and everyone loves it. However, after a few months, we decide the Guitar is a little bit boring and could do with an awesome flame pattern to make it look a bit more ‘rock and roll’.</p>
+<p>At this point, it might be tempting to just open up the Guitar class and add a flame pattern – but who knows what errors that might throw up in our application.</p>
+<p>Instead, let’s stick to the open-closed principle and simply extend our Guitar class:</p>
+<p>~<br>public class SuperCoolGuitarWithFlames extends Guitar {</p>
+<pre><code>private String flameColor;
+
+//constructor, getters + setters
+</code></pre>
+<p>}<br>~</p>
+<p>By extending the Guitar class we can be sure that our existing application won’t be affected.</p>
+<h4 id="5-Liskov-Substitution-LSP"><a href="#5-Liskov-Substitution-LSP" class="headerlink" title="5. Liskov Substitution - LSP"></a>5. Liskov Substitution - LSP</h4><p>Next up on our list is Liskov substitution, which is arguably the most complex of the 5 principles. </p>
+<p>Simply put, <em><strong>if class A is a subtype of class B, then we should be able to replace B with A without disrupting the behavior of our program.</strong></em></p>
+<p>Let’s just jump straight to the code to help wrap our heads around this concept:</p>
+<p>~<br>public interface Vehicle {</p>
+<pre><code>void turnOnEngine();
+void accelerate();
+</code></pre>
+<p>}<br>~</p>
+<p>Above, we define a simple Vehicle interface with a couple of methods that all cars should be able to fulfill – turning on the engine, and accelerating forward.</p>
+<p>Let’s implement our interface and provide some code for the methods:</p>
+<p>~<br>public class Car implements Vehicle {</p>
+<pre><code>private Engine engine;
+
+//Constructors, getters + setters
+
+public void turnOnEngine() &#123;
+    //turn on the engine!
+    engine.on();
+&#125;
+
+public void accelerate() &#123;
+    //move forward!
+    engine.powerOn(1000);
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>As our code describes, we have an engine that we can turn on, and we can increase the power. But wait, its 2020 and we are now using bikes as a vehicle too! </p>
+<p>~<br>public class Bike implements Vehicle {</p>
+<pre><code>public void turnOnEngine() &#123;
+    throw new AssertionError(&quot;I don&#39;t have an engine!&quot;);
+&#125;
+
+public void accelerate() &#123;
+    //this acceleration is crazy!
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>By throwing a bike without an engine into the mix, we are inherently changing the behavior of our program.<br>This is a blatant <em><strong>violation of Liskov substitution and is a bit harder to fix than our previous 2 principles.</strong></em></p>
+<p>One possible solution would be to rework our model into interfaces that take into account the engine-less state of our Vehicle.</p>
+<p>I would rewire them with another example to satisfy Mr. Liskov in <a target="_blank" href="#/lsp">this article</a> separately, make sure to check it out.</p>
+<h4 id="6-Interface-Segregation"><a href="#6-Interface-Segregation" class="headerlink" title="6. Interface Segregation"></a>6. Interface Segregation</h4><p>The ‘I ‘ in SOLID stands for interface segregation, and it simply means that larger interfaces should be split into smaller ones.<br>It states that no client should be forced to depend on methods it does not use.<br>By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.</p>
+<p>For this example, we’re going to try our hands as zookeepers. And more specifically, we’ll be working in the bear enclosure.</p>
+<p>Let’s start with an interface that outlines our roles as a bear keeper:</p>
+<p>~<br>public interface BearKeeper {<br>    void washTheBear();<br>    void feedTheBear();<br>    void petTheBear();<br>}<br>~</p>
+<p>As avid zookeepers, we’re more than happy to wash and feed our beloved bears. However, we’re all too aware of the dangers of petting them.<br>Unfortunately, our interface is rather large, and we have no choice than to implement the code to pet the bear.</p>
+<p>Let’s fix this by splitting our large interface into 3 separate ones:</p>
+<p>~<br>public interface BearCleaner {<br>    void washTheBear();<br>}<br>~</p>
+<p>~<br>public interface BearFeeder {<br>    void feedTheBear();<br>}<br>~</p>
+<p>~<br>public interface BearPetter {<br>    void petTheBear();<br>}<br>~</p>
+<p>Now, thanks to interface segregation, we’re free to implement only the methods that matter to us:</p>
+<p>~<br>public class BearCarer implements BearCleaner, BearFeeder {</p>
+<pre><code>public void washTheBear() &#123;
+    //I think we missed a spot...
+&#125;
+
+public void feedTheBear() &#123;
+    //Tuna Tuesdays...
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>And finally, we can leave the dangerous stuff to the crazy people:</p>
+<p>~<br>public class CrazyPerson implements BearPetter {</p>
+<pre><code>public void petTheBear() &#123;
+    //Good luck with that!
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<h4 id="7-Dependency-Inversion"><a href="#7-Dependency-Inversion" class="headerlink" title="7. Dependency Inversion"></a>7. Dependency Inversion</h4><p><em><strong>The principle of Dependency Inversion refers to the decoupling of software modules.<br>This way, instead of high-level modules depending on low-level modules, both will depend on abstractions.</strong></em></p>
+<p>To demonstrate this, let’s go old-school and bring to life a Windows 98 computer with code:</p>
+<p>~<br>public class Windows98Machine {}<br>~</p>
+<p>But what good is a computer without a monitor and keyboard? Let’s add one of each to our constructor so that every Windows98Computer we instantiate comes pre-packed with a Monitor and a StandardKeyboard:</p>
+<p>~<br>public class Windows98Machine {</p>
+<pre><code>private final StandardKeyboard keyboard;
+private final Monitor monitor;
+
+public Windows98Machine() &#123;
+    monitor = new Monitor();
+    keyboard = new StandardKeyboard();
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>This code will work, and we’ll be able to use the <em><strong>StandardKeyboard</strong></em> and <em><strong>Monitor</strong></em> freely within our <em><strong>Windows98Computer</strong></em> class.<br>Problem solved? <em><strong>Not quite</strong></em>. By declaring the <em><strong>StandardKeyboard</strong></em> and <em><strong>Monitor</strong></em> with the new keyword, we’ve tightly coupled these 3 classes together.</p>
+<p>Not only does this make our Windows98Computer hard to test, but we’ve also lost the ability to switch out our <em><strong>StandardKeyboard</strong></em><br>class with a different one should the need arise. And we’re stuck with our <em><strong>Monitor</strong></em> class, too.</p>
+<p>Let’s decouple our machine from the <em><strong>StandardKeyboard</strong></em> by adding a more general <em><strong>Keyboard</strong></em> interface and using this in our class:</p>
+<p>~<br>public interface Keyboard { }<br>~</p>
+<p>And now by using <strong>Keyboard</strong> we can would allow <strong>Windows98Machine</strong> substitute any type of <strong>Keyboard</strong>  </p>
+<p>~<br>public class Windows98Machine{</p>
+<pre><code>private final Keyboard keyboard;
+private final Monitor monitor;
+
+public Windows98Machine(Keyboard keyboard, Monitor monitor) &#123;
+    this.keyboard = keyboard;
+    this.monitor = monitor;
+&#125;
+</code></pre>
+<p>}<br>~</p>
+<p>Here, we’re using the dependency injection pattern here to facilitate adding the Keyboard dependency into the Windows98Machine class.</p>
+<p>Let’s also modify our StandardKeyboard class to implement the Keyboard interface so that it’s suitable for injecting into the Windows98Machine class:</p>
+<p>~<br>public class StandardKeyboard implements Keyboard { }<br>~</p>
+<p>Now our classes are decoupled and communicate through the Keyboard abstraction. If we want, we can easily switch out the type of keyboard in our machine with a different implementation of the interface. We can follow the same principle for the Monitor class.</p>
+<p>Excellent! We’ve decoupled the dependencies and are free to test our Windows98Machine with whichever testing framework we choose.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/05/solid-principle/solid/" data-id="cl0e6xfsg00063c9k5zw9h2p6" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/05/structures/dfs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Depth First Search - DFS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/05/solid-principle/lsp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/05/structures/dfs/">Depth First Search - DFS</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/solid-principle/solid/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/solid-principle/lsp/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/java-features/java8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/footer/privacy/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Mehrdad Karami<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

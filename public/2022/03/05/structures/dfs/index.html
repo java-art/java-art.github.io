@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Depth First Search - DFS | OnlineJavaClass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A DFS is an algorithm to travers graph-based structures (also for trees included in graphs)in a depth order fashion.  1DFS is helpful to traverse nodes of a graph only once and you want to go deep in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Depth First Search - DFS">
+<meta property="og:url" content="http://example.com/2022/03/05/structures/dfs/index.html">
+<meta property="og:site_name" content="OnlineJavaClass">
+<meta property="og:description" content="A DFS is an algorithm to travers graph-based structures (also for trees included in graphs)in a depth order fashion.  1DFS is helpful to traverse nodes of a graph only once and you want to go deep in">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/data/structures/assets/dfs.gif">
+<meta property="article:published_time" content="2022-03-05T18:33:18.093Z">
+<meta property="article:modified_time" content="2022-03-05T18:37:13.140Z">
+<meta property="article:author" content="Mehrdad Karami">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/data/structures/assets/dfs.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="OnlineJavaClass" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">OnlineJavaClass</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">online java class</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-structures/dfs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/05/structures/dfs/" class="article-date">
+  <time class="dt-published" datetime="2022-03-05T18:33:18.093Z" itemprop="datePublished">2022-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Depth First Search - DFS
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>A DFS is an algorithm to travers graph-based structures (also for trees included in graphs)<br>in a depth order fashion. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DFS is helpful to traverse nodes of a graph only once and you want to go deep in a child from parent node as much as it is possible.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Usecases"><a href="#Usecases" class="headerlink" title="Usecases:"></a>Usecases:</h3><p>Before jumping into discussion what DFS is, let’s understand the usecase of DFS.</p>
+<p>Imagine that you are asked to write a basic algorithm for a Chess game. The opponent which can<br>be an AI computer wants to defeat the player. It should decide all available movements for a piece.</p>
+<p>To continue, let’s imagine computer starts with a Pawn. It is obvious the first move<br>only go one or two upfront (just as the beginning of time). If you want to devise a<br>very professional algorithm that stimulate the player, it should predict the other movements after.</p>
+<p>How about the next moves? Computer can decide randomly but have a good play matters to win and challenge the game!</p>
+<p>So for this algorithm we can use start the move in the memory and then see other available movements<br>until no movement is possible and pick the one to prevent defeat fast!</p>
+<p>A pseudo code for our simple algorithm is as follows:</p>
+<p>~<br>pick a piece (pawn here)</p>
+<ol>
+<li>for any available movements in neighbor cells<br> check if movement is possible<br> insert it into a Stack if it was possible</li>
+<li>for any movement in Stack<br> peek the move<br> check if it will be defeated?<br> repeat 1.<br>~</li>
+</ol>
+<p>Now you can see our algorithm is getting toward intelligent movements and can simulate a real opponent.</p>
+<h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><p>Before going to implement this chess algo let’s DFS.<br>For a DFS we have a Graph (G for instance),and a starting node that we want to start traversing the graph<br>The pseudo code for DFS is like below:</p>
+<h5 id="G-Graph-v-starting-node-can-be-root-node-vertex-node-vertices-nodes"><a href="#G-Graph-v-starting-node-can-be-root-node-vertex-node-vertices-nodes" class="headerlink" title="G: Graph, v: starting node (can be root node) , vertex: node, vertices: nodes"></a>G: Graph, v: starting node (can be root node) , vertex: node, vertices: nodes</h5><p>~<br>dfs(G, v):<br>    label v as discovered<br>    for all vertices connected to v<br>        check vertex is not visited before?<br>            call dfs(G,vertex)<br>~ </p>
+<p>Note that recursive calling acts like a Stack for us.If we want to have iterative approach we will need a stack.<br>Below is the non-recursive implementation or iterative approach for the above pseudo code.</p>
+<p>~<br>dfs(G, v):<br>    define a stack<br>    put v into stack<br>    while stack is not empty<br>        poll top vertex from stack<br>        label v as discovered<br>        for all vertices connected to v<br>            push vertex into stack<br>~ </p>
+<p>Imagine we have tree (sort of a simple graph), then you can see the below action when you run the algo against this tree:  </p>
+<p><img src="/data/structures/assets/dfs.gif" alt="dfs"></p>
+<h2 id="Implementation-of-Chess-algo"><a href="#Implementation-of-Chess-algo" class="headerlink" title="Implementation of Chess algo"></a>Implementation of Chess algo</h2><p>Now Let’s see how to we can implement the chess algo in Java using DFS.</p>
+<p>There are two ways to implement the DFS:</p>
+<ul>
+<li>Recursive approach</li>
+<li>Iterative approach</li>
+</ul>
+<p>I will implement the recursive approach.</p>
+<p>~</p>
+<p>~</p>
+<p>I will implement the iterative approach.</p>
+<p>~<br>import java.util.Stack;</p>
+<p>public class DFS {</p>
+<pre><code>static class Vertex &#123;
+    private final String cell;
+
+    Vertex(String cell) &#123;
+        this.cell = cell;
+    &#125;
+&#125;
+
+static class Tree &#123;
+    public final Vertex vertex;
+    public final Tree left;
+    public final Tree right;
+    public boolean visited;
+
+    private Tree(Builder builder) &#123;
+        this.left = builder.getLeft();
+        this.right = builder.getRight();
+        this.vertex = builder.getValue();
+    &#125;
+
+    public static class Builder &#123;
+        private Tree left, right;
+        private final Vertex value;
+
+        public Builder(Vertex vertex) &#123;
+            value = vertex;
+        &#125;
+
+        public static Builder builder(Vertex vertex) &#123;
+            return new Builder(vertex);
+        &#125;
+
+        public Builder setLeft(Tree left) &#123;
+            this.left = left;
+            return this;
+        &#125;
+
+        public Builder setRight(Tree right) &#123;
+            this.right = right;
+            return this;
+        &#125;
+
+        public Tree getLeft() &#123;
+            return left;
+        &#125;
+
+        public Tree getRight() &#123;
+            return right;
+        &#125;
+
+        public Vertex getValue() &#123;
+            return value;
+        &#125;
+
+        Tree build() &#123;
+            return new Tree(this);
+        &#125;
+    &#125;
+
+    public Vertex getVertex() &#123;
+        return vertex;
+    &#125;
+
+    public Tree getRight() &#123;
+        return right;
+    &#125;
+
+    public Tree getLeft() &#123;
+        return left;
+    &#125;
+&#125;
+
+public DFS() &#123;
+    Tree tree = Tree.Builder.builder(new Vertex(&quot;2&quot;))
+            .setLeft(Tree.Builder.builder(new Vertex(&quot;3&quot;))
+                    .setLeft(Tree.Builder.builder(new Vertex(&quot;4&quot;)).build())
+                    .setRight(Tree.Builder.builder(new Vertex(&quot;1&quot;)).build())
+                    .build()
+            )
+            .setRight(Tree.Builder.builder(new Vertex(&quot;10&quot;)).build())
+            .build();
+
+    Tree tree2 = Tree.Builder.builder(new Vertex(&quot;1&quot;))
+            .setLeft(Tree.Builder.builder(new Vertex(&quot;2&quot;))
+                    .setLeft(Tree.Builder.builder(new Vertex(&quot;3&quot;))
+                            .setLeft(Tree.Builder.builder(new Vertex(&quot;4&quot;)).build())
+                            .setRight(Tree.Builder.builder(new Vertex(&quot;5&quot;)).build())
+                            .build())
+                    .build()).build();
+
+    Stack&lt;Tree&gt; vertices = new Stack&lt;&gt;();
+    vertices.push(tree);
+    vertices.push(tree2);
+    while (!vertices.isEmpty()) &#123;
+        Tree topNode = vertices.pop();
+        if (!topNode.visited) &#123;
+            System.out.println(topNode.vertex.cell);
+        &#125;
+        topNode.visited = true;
+        Tree leftChild = topNode.left;
+        Tree rightChild = topNode.right;
+        if (rightChild != null &amp;&amp; !rightChild.visited) &#123;
+            vertices.push(rightChild);
+        &#125;
+        if (leftChild != null &amp;&amp; !leftChild.visited) &#123;
+            vertices.push(leftChild);
+        &#125;
+    &#125;
+&#125;
+
+public static void main(String[] args) &#123;
+    new DFS();
+&#125;
+</code></pre>
+<p>}</p>
+<p>~</p>
+<p>Another example using Graph</p>
+<p>~</p>
+<p>public class DepthFirstSearch {</p>
+<pre><code>public static void main(String[] args) &#123;
+    Vertex v1 = Vertex.build(&quot;1&quot;);
+    Vertex v2 = Vertex.build(&quot;2&quot;);
+    Vertex v3 = Vertex.build(&quot;3&quot;);
+    Vertex v4 = Vertex.build(&quot;4&quot;);
+    Vertex v5 = Vertex.build(&quot;5&quot;);
+
+    v1.setConnection(v2.setConnection(v3, v4), v5);
+    dfs(v1);
+&#125;
+
+static void dfs(Vertex root) &#123;
+    List&lt;Vertex&gt; visited = new ArrayList&lt;&gt;();
+    Stack&lt;Vertex&gt; stack = new Stack&lt;&gt;();
+    stack.push(root);
+    while (!stack.empty()) &#123;
+        Vertex top = stack.pop();
+        if (!visited.contains(top)) &#123;
+            visited.add(top);
+        &#125;
+        if (top.vertices != null) &#123;
+            for (Vertex vertex : top.vertices) &#123;
+                stack.push(vertex);
+            &#125;
+        &#125;
+    &#125;
+    visited.forEach(vertex -&gt; System.out.println(vertex.cell));
+&#125;
+
+private static class Graph &#123;
+    private final Vertex root;
+
+    Graph(Vertex root) &#123;
+        this.root = root;
+    &#125;
+&#125;
+
+private static class Vertex &#123;
+    private final String cell;
+    private Vertex[] vertices;
+
+    private Vertex(String cell) &#123;
+        this.cell = cell;
+    &#125;
+
+    static Vertex build(String cell) &#123;
+        return new Vertex(cell);
+    &#125;
+
+    public Vertex setConnection(Vertex... vertices) &#123;
+        this.vertices = vertices;
+        return this;
+    &#125;
+&#125;
+</code></pre>
+<p>}<br>~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/05/structures/dfs/" data-id="cl0e6xfsg00073c9khvpc0zt4" data-title="Depth First Search - DFS" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/05/solid-principle/solid/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/05/structures/dfs/">Depth First Search - DFS</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/solid-principle/solid/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/solid-principle/lsp/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/java-features/java8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/footer/privacy/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Mehrdad Karami<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

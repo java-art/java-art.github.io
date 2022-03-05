@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>OnlineJavaClass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Liskov Substitution Principle ExplainedThis article gives a quick intro to the Liskov Substitution Principle (LSP), why it’s important, and how to use it to validate object-oriented designs. We’ll als">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OnlineJavaClass">
+<meta property="og:url" content="http://example.com/2022/03/05/solid-principle/lsp/index.html">
+<meta property="og:site_name" content="OnlineJavaClass">
+<meta property="og:description" content="Liskov Substitution Principle ExplainedThis article gives a quick intro to the Liskov Substitution Principle (LSP), why it’s important, and how to use it to validate object-oriented designs. We’ll als">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/data/solid-principle/ldp-bank-class-diagram.png">
+<meta property="article:published_time" content="2022-03-05T18:33:18.057Z">
+<meta property="article:modified_time" content="2022-03-05T18:33:18.057Z">
+<meta property="article:author" content="Mehrdad Karami">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/data/solid-principle/ldp-bank-class-diagram.png">
+  
+    <link rel="alternate" href="/atom.xml" title="OnlineJavaClass" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">OnlineJavaClass</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">online java class</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-solid-principle/lsp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/05/solid-principle/lsp/" class="article-date">
+  <time class="dt-published" datetime="2022-03-05T18:33:18.057Z" itemprop="datePublished">2022-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Liskov-Substitution-Principle-Explained"><a href="#Liskov-Substitution-Principle-Explained" class="headerlink" title="Liskov Substitution Principle Explained"></a>Liskov Substitution Principle Explained</h3><p>This article gives a quick intro to the Liskov Substitution Principle (LSP), why it’s important, and how to use it to validate object-oriented designs. We’ll also see some examples and learn how to correctly identify and fix violations of the LSP.</p>
+<h3 id="What-is-the-LSP"><a href="#What-is-the-LSP" class="headerlink" title="What is the LSP?"></a>What is the LSP?</h3><p>At a high level, the LSP states that in an object-oriented program, if we substitute a superclass object reference with an object of any of its subclasses, the program should not break.</p>
+<p>Say we had a method that used a superclass object reference to do something:</p>
+<p>~<br>class SomeClass {</p>
+<p>  void aMethod(SuperClass superClassReference) {<br>    doSomething(superClassReference);<br>  }</p>
+<p>  &#x2F;&#x2F; definition of doSomething() omitted<br>}<br>~</p>
+<p>This should work as expected for every possible subclass object of SuperClass that is passed to it. If substituting a superclass object with a subclass object changes the program behavior in unexpected ways, the LSP is violated.</p>
+<p>The LSP is applicable when there’s a supertype-subtype inheritance relationship by either extending a class or implementing an interface. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">We can think of the methods defined in the supertype as defining a contract. Every subtype is expected to stick to this contract. If a subclass does not adhere to the superclass’s contract, it’s violating the LSP.</span><br></pre></td></tr></table></figure>
+
+<p>This makes sense intuitively - a class’s contract tells its clients what to expect. If a subclass extends or overrides the behavior of the superclass in unintended ways, it would break the clients.</p>
+<p>How can a method in a subclass break a superclass method’s contract? There are several possible ways:</p>
+<ol>
+<li>Returning an object that’s incompatible with the object returned by the superclass method.</li>
+<li>Throwing a new exception that’s not thrown by the superclass method.</li>
+<li>Changing the semantics or introducing side effects that are not part of the superclass’s contract.</li>
+</ol>
+<p>Java and other statically-typed languages prevent 1 (unless we use very generic classes like Object) and 2 (for checked exceptions) by flagging them at compile-time. It’s still possible to violate the LSP in these languages via the third way.</p>
+<h4 id="Why-is-the-LSP-Important"><a href="#Why-is-the-LSP-Important" class="headerlink" title="Why is the LSP Important?"></a>Why is the LSP Important?</h4><p>LSP violations are a design smell. We may have generalized a concept prematurely and created a superclass where none is needed.<br>Future requirements for the concept might not fit the class hierarchy we have created.</p>
+<p>If client code cannot substitute a superclass reference with a subclass object freely, it would be forced to do instanceof checks and specially handle some subclasses.<br>If this kind of conditional code is spread across the codebase, it will be difficult to maintain.</p>
+<p>Every time we add or modify a subclass, we would have to comb through the codebase and change multiple places. This is difficult and error-prone.</p>
+<p>It also defeats the purpose of introducing the supertype abstraction in the first place which is to make it easy to enhance the program.</p>
+<p>It may not even be possible to identify all the places and change them - we may not own or control the client code. We could be developing our functionality as a library and providing them to external users, for example.</p>
+<h4 id="Violating-the-LSP-An-Example"><a href="#Violating-the-LSP-An-Example" class="headerlink" title="Violating the LSP - An Example"></a>Violating the LSP - An Example</h4><p>Suppose we were building the payment module for our eCommerce website. Customers order products on the site and pay using payment instruments like a credit card or a debit card.</p>
+<blockquote>
+<p>When a customer provides their card details, we want to</p>
+<ul>
+<li>validate it,</li>
+<li>run it through a third-party fraud detection system,</li>
+<li>and then send the details to a payment gateway for processing.</li>
+</ul>
+</blockquote>
+<p>While some basic validations are required on all cards, there are additional validations needed on credit cards. Once the payment is done, we record it in our database. Because of various security and regulatory reasons, we don’t store the actual card details in our database, but a fingerprint identifier for it that’s returned by the payment gateway.</p>
+<p>Given these requirements, we might model our classes as below:</p>
+<p>~<br>abstract class PaymentInstrument {<br>  String name;<br>  String cardNumber;<br>  String verificationCode;<br>  Date expiryDate;<br>  String fingerprint;</p>
+<p>  void validate() throws PaymentInstrumentInvalidException {<br>    &#x2F;&#x2F; basic validation on name, expiryDate etc.<br>    if (name &#x3D;&#x3D; null || name.isEmpty()) {<br>      throw new PaymentInstrumentInvalidException(“Name is invalid”);<br>    }<br>    &#x2F;&#x2F; other validations<br>  }</p>
+<p>  void runFraudChecks() throws FraudDetectedException {<br>    &#x2F;&#x2F; run checks against a third-party system<br>  }</p>
+<p>  void sendToPaymentGateway() throws PaymentFailedException {<br>    &#x2F;&#x2F; send details to payment gateway (PG) and set fingerprint from<br>    &#x2F;&#x2F; the payment gateway response<br>  }<br>}<br>~</p>
+<p>~<br>class CreditCard extends PaymentInstrument {</p>
+<p>  @Override<br>  void validate() throws PaymentInstrumentInvalidException {<br>    super.validate();<br>    &#x2F;&#x2F; additional validations for credit cards<br>  }<br>  &#x2F;&#x2F; other credit card-specific code<br>}<br>~</p>
+<p>~<br>class DebitCard extends PaymentInstrument {<br>  &#x2F;&#x2F; debit card-specific code<br>}<br>~</p>
+<p>A different area in our codebase where we process a payment might look something like this:</p>
+<p>~<br>class PaymentProcessor {<br>  void process(OrderDetails orderDetails, PaymentInstrument paymentInstrument) {<br>    try {<br>      paymentInstrument.validate();<br>      paymentInstrument.runFraudChecks();<br>      paymentInstrument.sendToPaymentGateway();<br>      saveToDatabase(orderDetails, paymentInstrument);<br>    } catch (…){<br>        &#x2F;&#x2F; exception handling<br>    }<br>  }</p>
+<p>  void saveToDatabase(<br>      OrderDetails orderDetails,<br>      PaymentInstrument paymentInstrument) {<br>    String fingerprint &#x3D; paymentInstrument.getFingerprint();<br>    &#x2F;&#x2F; save fingerprint and order details in DB<br>  }<br>}<br>~</p>
+<p>Of course, in an actual production system, there would be many complex aspects to handle. The single processor class above might well be a bunch of classes in multiple packages across service and repository layers.</p>
+<p>All is well and our system is processing payments as expected. At some point, the marketing team decides to introduce reward points to increase customer loyalty. Customers get a small number of reward points for each purchase. They can use the points to buy products on the site.</p>
+<p>Ideally, we should be able to just add a <em><strong>RewardsCard</strong></em> class that extends <em><strong>PaymentInstrument</strong></em> and be done with it. But we find that adding it violates the LSP!</p>
+<p>There are no fraud checks for Rewards Cards. Details are not sent to payment gateways and there is no concept of a fingerprint identifier.<br><em><strong>PaymentProcessor</strong></em> breaks as soon as we add <em><strong>RewardsCard</strong></em>.</p>
+<p>We might try force-fitting <em><strong>RewardsCard</strong></em> into the current class hierarchy by overriding <em><strong>runFraudChecks()</strong></em> and <em><strong>sendToPaymentGateway()</strong></em> with empty, do-nothing implementations.</p>
+<p>This would still break the application - we might get a <em><strong>NullPointerException</strong></em> from the <em><strong>saveToDatabase()</strong></em> method since the fingerprint would be null. Can we handle it just this once as a special case in <em><strong>saveToDatabase()</strong></em> by doing an ***instanceofv check on the <em><strong>PaymentInstrument</strong></em> argument?</p>
+<p>But we know that if we do it once, we’ll do it again. Soon our codebase will be strewn with multiple checks and special cases to handle the problems created by the incorrect class model. We can imagine the pain this will cause each time we enhance the payment module.</p>
+<p>For example, what if the business decides to accept Bitcoins? Or marketing introduces a new payment mode like Cash on Delivery?</p>
+<h4 id="Fixing-the-Design"><a href="#Fixing-the-Design" class="headerlink" title="Fixing the Design"></a>Fixing the Design</h4><p>Let’s revisit the design and create supertype abstractions only if they are general enough to create code that is flexible to requirement changes. We will also use the following object-oriented design principles:</p>
+<blockquote>
+<ul>
+<li>Program to interface, not implementation</li>
+<li>Encapsulate what varies</li>
+<li>Prefer composition over inheritance</li>
+</ul>
+</blockquote>
+<p>To start with, what we can be sure of is that our application needs to collect payment - both at present and in the future. It’s also reasonable to think that we would want to validate whatever payment details we collect. Almost everything else could change. So let’s define the below interfaces:</p>
+<p>~<br>interface PaymentInstrument{<br>  void validate() throws PaymentInstrumentInvalidException;<br>  PaymentResponse collectPayment() throws PaymentFailedException;<br>}<br>~</p>
+<p>~<br>class PaymentResponse {<br>  String identifier;<br>}<br>~</p>
+<p><strong>PaymentResponse</strong> encapsulates an <strong>identifier</strong> - this could be the fingerprint for credit and debit cards or the card number for rewards cards.<br>It could be something else for a different payment instrument in the future. The encapsulation ensures <strong>PaymentInstrument</strong> can remain unchanged if future payment instruments have more data.</p>
+<p><strong>PaymentProcessor</strong> class now looks like this:</p>
+<p>~<br>class PaymentProcessor {<br>  void process(<br>      OrderDetails orderDetails,<br>      PaymentInstrument paymentInstrument) {<br>    try {<br>      paymentInstrument.validate();<br>      PaymentResponse response &#x3D; paymentInstrument.collectPayment();<br>      saveToDatabase(orderDetails, response.getIdentifier());<br>    } catch (…) {<br>      &#x2F;&#x2F; exception handling<br>    }<br>  }</p>
+<p>  void saveToDatabase(OrderDetails orderDetails, String identifier) {<br>    &#x2F;&#x2F; save the identifier and order details in DB<br>  }<br>}<br>~</p>
+<p>There are no <strong>runFraudChecks()</strong> and <strong>sendToPaymentGateway()</strong> calls in <strong>PaymentProcessor</strong> anymore - these are not general enough to apply to all payment instruments.</p>
+<p>Let’s add a few more interfaces for other concepts which seem general enough in our problem domain:</p>
+<p>~<br>interface FraudChecker {<br>  void runChecks() throws FraudDetectedException;<br>}<br>~</p>
+<p>~<br>interface PaymentGatewayHandler {<br>  PaymentGatewayResponse handlePayment() throws PaymentFailedException;<br>}<br>~</p>
+<p>~<br>interface PaymentInstrumentValidator {<br>  void validate() throws PaymentInstrumentInvalidException;<br>}<br>~</p>
+<p>~<br>class PaymentGatewayResponse {<br>  String fingerprint;<br>}<br>~</p>
+<p>And here are the implementations:</p>
+<p>~<br>class ThirdPartyFraudChecker implements FraudChecker {<br>  &#x2F;&#x2F; members omitted</p>
+<p>  @Override<br>  void runChecks() throws FraudDetectedException {<br>    &#x2F;&#x2F; external system call omitted<br>  }<br>}<br>~</p>
+<p>~<br>class PaymentGatewayHandler implements PaymentGatewayHandler {<br>  &#x2F;&#x2F; members omitted</p>
+<p>  @Override<br>  PaymentGatewayResponse handlePayment() throws PaymentFailedException {<br>    &#x2F;&#x2F; send details to payment gateway (PG), set the fingerprint<br>    &#x2F;&#x2F; received from PG on a PaymentGatewayResponse and return<br>  }<br>}<br>~</p>
+<p>~<br>class BankCardBasicValidator implements PaymentInstrumentValidator {<br>  &#x2F;&#x2F; members like name, cardNumber etc. omitted</p>
+<p>  @Override<br>  void validate() throws PaymentInstrumentInvalidException {<br>    &#x2F;&#x2F; basic validation on name, expiryDate etc.<br>    if (name &#x3D;&#x3D; null || name.isEmpty()) {<br>      throw new PaymentInstrumentInvalidException(“Name is invalid”);<br>    }<br>    &#x2F;&#x2F; other basic validations<br>  }<br>}<br>~</p>
+<p>Let’s build <strong>CreditCard</strong> and <strong>DebitCard</strong> abstractions by composing the above building blocks in different ways.<br>We first define a class that implements <strong>PaymentInstrument</strong>:</p>
+<p>~<br>abstract class BaseBankCard implements PaymentInstrument {<br>  &#x2F;&#x2F; members like name, cardNumber etc. omitted<br>  &#x2F;&#x2F; below dependencies will be injected at runtime<br>  PaymentInstrumentValidator basicValidator;<br>  FraudChecker fraudChecker;<br>  PaymentGatewayHandler gatewayHandler;</p>
+<p>  @Override<br>  void validate() throws PaymentInstrumentInvalidException {<br>    basicValidator.validate();<br>  }</p>
+<p>  @Override<br>  PaymentResponse collectPayment() throws PaymentFailedException {<br>    PaymentResponse response &#x3D; new PaymentResponse();<br>    try {<br>      fraudChecker.runChecks();<br>      PaymentGatewayResponse pgResponse &#x3D; gatewayHandler.handlePayment();<br>      response.setIdentifier(pgResponse.getFingerprint());<br>    } catch (FraudDetectedException e) {<br>      &#x2F;&#x2F; exception handling<br>    }<br>    return response;<br>  }<br>}</p>
+<p>~</p>
+<p>~<br>class CreditCard extends BaseBankCard {<br>  &#x2F;&#x2F; constructor omitted</p>
+<p>  @Override<br>  void validate() throws PaymentInstrumentInvalidException {<br>    basicValidator.validate();<br>    &#x2F;&#x2F; additional validations for credit cards<br>  }<br>}<br>~</p>
+<p>~<br>class DebitCard extends BaseBankCard {<br>  &#x2F;&#x2F; constructor omitted<br>}<br>~</p>
+<p>Though <strong>CreditCard</strong> and <strong>DebitCard</strong> extend a class, it’s not the same as before.<br>Other areas of our codebase now depend only on the <strong>PaymentInstrument</strong> interface, not on <strong>BaseBankCard</strong>.<br>Below snippet shows <strong>CreditCard</strong> object creation and processing:</p>
+<p>~<br>PaymentGatewayHandler gatewayHandler &#x3D;<br>  new PaymentGatewayHandler(name, cardNum, code, expiryDate);</p>
+<p>PaymentInstrumentValidator validator &#x3D;<br>  new BankCardBasicValidator(name, cardNum, code, expiryDate);</p>
+<p>FraudChecker fraudChecker &#x3D;<br>  new ThirdPartyFraudChecker(name, cardNum, code, expiryDate);</p>
+<p>CreditCard card &#x3D;<br>  new CreditCard(<br>    name,<br>    cardNum,<br>    code,<br>    expiryDate,<br>    validator,<br>    fraudChecker,<br>    gatewayHandler);</p>
+<p>paymentProcessor.process(order, card);<br>~</p>
+<p>Our design is now <strong>flexible enough</strong> to let us add a <strong>RewardsCard</strong> - no force-fitting and no conditional checks.<br>We just add the new class and it works as expected.</p>
+<p>~<br>class RewardsCard implements PaymentInstrument {<br>  String name;<br>  String cardNumber;</p>
+<p>  @Override<br>  void validate() throws PaymentInstrumentInvalidException {<br>    &#x2F;&#x2F; Rewards card related validations<br>  }</p>
+<p>  @Override<br>  PaymentResponse collectPayment() throws PaymentFailedException {<br>    PaymentResponse response &#x3D; new PaymentResponse();<br>    &#x2F;&#x2F; Steps related to rewards card payment like getting current<br>    &#x2F;&#x2F; rewards balance, updating balance etc.<br>    response.setIdentifier(cardNumber);<br>    return response;<br>  }<br>}<br>~</p>
+<p>And here’s client code using the new card:</p>
+<p>~<br>RewardsCard card &#x3D; new RewardsCard(name, cardNum);<br>paymentProcessor.process(order, card);<br>~</p>
+<h4 id="Here-is-the-final-class-diagram"><a href="#Here-is-the-final-class-diagram" class="headerlink" title="Here is the final class diagram"></a>Here is the final class diagram</h4><p><img src="/data/solid-principle/ldp-bank-class-diagram.png" alt="final-class-diagram"></p>
+<h4 id="Advantages-of-the-New-Design"><a href="#Advantages-of-the-New-Design" class="headerlink" title="Advantages of the New Design"></a>Advantages of the New Design</h4><p>The new design not only fixes the LSP violation but also gives us a loosely-coupled, flexible set of classes to handle changing requirements.<br>For example, adding new payment instruments like Bitcoin and Cash on Delivery is easy - we just add new classes that implement <strong>PaymentInstrument</strong>.</p>
+<p>Business needs debit cards to be processed by a different payment gateway? No problem - we add a new class that implements <strong>PaymentGatewayHandler</strong> and inject it into <strong>DebitCard</strong>.<br>If DebitCard’s requirements begin to diverge a lot from CreditCard’s, we can have it implement directly instead of extending <strong>BaseBankCard</strong> - <em>no other class is impacted</em>.</p>
+<p>If we need an in-house fraud check for <strong>RewardsCard</strong>, we add an <strong>InhouseFraudChecker</strong> that implements <strong>FraudChecker</strong>, inject it into <strong>RewardsCard</strong> and only change <strong>RewardsCard.collectPayment()</strong>.</p>
+<h4 id="How-to-Identify-LSP-Violations"><a href="#How-to-Identify-LSP-Violations" class="headerlink" title="How to Identify LSP Violations?"></a>How to Identify LSP Violations?</h4><p>Some good indicators to identify LSP violations are:</p>
+<p>Conditional logic (using the <strong>instanceof</strong> operator or <strong>object.getClass().getName()</strong> to identify the actual <strong>subclass</strong>)<br>in client code empty, do-nothing implementations of one or more methods in subclasses throwing an <strong>UnsupportedOperationException</strong> or some other unexpected exception from a subclass method.</p>
+<p>Consider <strong>java.util.List<E></strong> interface’s <strong>add(E e)</strong> method. Since <strong>java.util.Arrays.asList(T …)</strong> returns an unmodifiable list, client code which adds an element to a List would break if it were passed a List returned by <strong>Arrays.asList</strong>.</p>
+<p>Is this an LSP violation? No - the <strong>List.add(E e)</strong> method’s contract says implementations may throw an <strong>UnsupportedOperationException</strong>. Clients are expected to handle this when using the method.</p>
+<h4 id="Example-output"><a href="#Example-output" class="headerlink" title="Example output"></a>Example output</h4><pre><code>Starting payment processing for customer Mehrdad with creadit card number 1234-1234-1234-1234-1234
+Running fraud checks against third-party system
+Fraud checks passed
+Sending details to payment gateway
+Credit card payment successful!
+Starting payment processing for customer Mehrdad with rewards card number 1234-1234-1234-1234-1234
+Updating rewards balance
+Rewards card payment successful!
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/05/solid-principle/lsp/" data-id="cl0e6xfsf00053c9k6tos4z5r" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/05/solid-principle/solid/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/05/java-features/java8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/05/structures/dfs/">Depth First Search - DFS</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/solid-principle/solid/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/solid-principle/lsp/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/java-features/java8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/05/footer/privacy/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Mehrdad Karami<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
