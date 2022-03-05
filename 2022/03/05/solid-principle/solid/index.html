@@ -1,103 +1,251 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mehrdad Karami">
+  <meta name="keywords" content="java">
   
-  <title>OnlineJavaClass</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
+    <meta name="description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OnlineJavaClass">
 <meta property="og:url" content="http://example.com/2022/03/05/solid-principle/solid/index.html">
 <meta property="og:site_name" content="OnlineJavaClass">
 <meta property="og:description" content="Solid: Guide to SOLID PrinciplesUsage in JavaThe following 5 concepts make up our SOLID principles:123451. Single Responsibility2. Open&#x2F;Closed3. Liskov Substitution4. Interface Segregation5. Dependenc">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-05T18:33:18.058Z">
-<meta property="article:modified_time" content="2022-03-05T18:33:18.058Z">
+<meta property="article:published_time" content="2022-03-05T18:41:34.222Z">
+<meta property="article:modified_time" content="2022-03-05T18:41:34.222Z">
 <meta property="article:author" content="Mehrdad Karami">
 <meta property="article:tag" content="java">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="OnlineJavaClass" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>OnlineJavaClass</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
 
   
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 6.0.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">OnlineJavaClass</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">online java class</a>
-        </h2>
-      
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-05 19:41" pubdate>
+        March 5, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      82 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-solid-principle/solid" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/05/solid-principle/solid/" class="article-date">
-  <time class="dt-published" datetime="2022-03-05T18:33:18.058Z" itemprop="datePublished">2022-03-05</time>
-</a>
+  <main>
     
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Solid-Guide-to-SOLID-Principles"><a href="#Solid-Guide-to-SOLID-Principles" class="headerlink" title="Solid: Guide to SOLID Principles"></a>Solid: Guide to SOLID Principles</h2><h3 id="Usage-in-Java"><a href="#Usage-in-Java" class="headerlink" title="Usage in Java"></a>Usage in Java</h3><h4 id="The-following-5-concepts-make-up-our-SOLID-principles"><a href="#The-following-5-concepts-make-up-our-SOLID-principles" class="headerlink" title="The following 5 concepts make up our SOLID principles:"></a>The following 5 concepts make up our SOLID principles:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. Single Responsibility</span><br><span class="line">2. Open/Closed</span><br><span class="line">3. Liskov Substitution</span><br><span class="line">4. Interface Segregation</span><br><span class="line">5. Dependency Inversion</span><br></pre></td></tr></table></figure>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <h2 id="Solid-Guide-to-SOLID-Principles"><a href="#Solid-Guide-to-SOLID-Principles" class="headerlink" title="Solid: Guide to SOLID Principles"></a>Solid: Guide to SOLID Principles</h2><h3 id="Usage-in-Java"><a href="#Usage-in-Java" class="headerlink" title="Usage in Java"></a>Usage in Java</h3><h4 id="The-following-5-concepts-make-up-our-SOLID-principles"><a href="#The-following-5-concepts-make-up-our-SOLID-principles" class="headerlink" title="The following 5 concepts make up our SOLID principles:"></a>The following 5 concepts make up our SOLID principles:</h4><figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> Single Responsibility<br><span class="hljs-bullet">2.</span> Open/Closed<br><span class="hljs-bullet">3.</span> Liskov Substitution<br><span class="hljs-bullet">4.</span> Interface Segregation<br><span class="hljs-bullet">5.</span> Dependency Inversion<br></code></pre></td></tr></table></figure>
 
 <h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>In this tutorial, we’ll be discussing the SOLID principles of Object-Oriented Design.</p>
 <p>First, we’ll start by exploring the reasons they came about and why we should consider them when designing software.<br>Then, we’ll outline each principle alongside some example code to emphasize the point.</p>
 <p>I specially want to discuss this before anything else, since this is a principle for designing a good high quality software.<br>You may encounter with this principle before or even wrote codes solidly! But one may wonder what are those other principles<br>to observe and have pretty good software design. Specially I want to discuss this in Java and how we do those pricipals.</p>
 <h4 id="2-The-Reason-for-SOLID-Principles"><a href="#2-The-Reason-for-SOLID-Principles" class="headerlink" title="2. The Reason for SOLID Principles"></a>2. The Reason for SOLID Principles</h4><p>The SOLID principles were first conceptualized by Robert C. Martin in his 2000 paper, Design Principles and Design Patterns.<br>These concepts were later built upon by Michael Feathers, who introduced us to the SOLID acronym and in the last 20 years, these 5 principles have revolutionized the world of object-oriented programming, changing the way that we write software.</p>
 <p>So, what is SOLID and how does it help us write better code? Simply put, Martin’s and Feathers’ </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">design principles encourage us to create more maintainable, understandable, and flexible software. Consequently, as our applications grow in size, we can reduce their complexity and save ourselves a lot of headaches further down the road!</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">design principles encourage us to</span> <span class="hljs-comment">create</span> <span class="hljs-comment">more</span> <span class="hljs-comment">maintainable</span><span class="hljs-string">,</span> <span class="hljs-comment">understandable</span><span class="hljs-string">,</span> <span class="hljs-comment">and</span> <span class="hljs-comment">flexible</span> <span class="hljs-comment">software</span><span class="hljs-string">.</span> <span class="hljs-comment">Consequently</span><span class="hljs-string">,</span> <span class="hljs-comment">as our applications grow in</span> <span class="hljs-comment">size</span><span class="hljs-string">,</span> <span class="hljs-comment">we can reduce their complexity and save ourselves a</span> <span class="hljs-comment">lot</span> <span class="hljs-comment">of headaches further down the</span> <span class="hljs-comment">road!</span><br></code></pre></td></tr></table></figure>
 
 <p>The following 5 concepts make up our SOLID principles:</p>
 <ol>
@@ -117,16 +265,16 @@
 </ol>
 <p>Take, for example, a class to represent a simple book:</p>
 <p>~<br>public class Book {</p>
-<pre><code>private String name;
+<div class="code-wrapper"><pre><code class="hljs">private String name;
 private String author;
 private String text;
 
 //constructor, getters and setters
-</code></pre>
+</code></pre></div>
 <p>}<br>~<br>In this code, we store the name, author, and text associated with an instance of a Book.</p>
 <p>Let’s now add a couple of methods to query the text:</p>
 <p>~<br>public class Book {</p>
-<pre><code>private String name;
+<div class="code-wrapper"><pre><code class="hljs">private String name;
 private String author;
 private String text;
 
@@ -140,19 +288,19 @@ public String replaceWordInText(String word)&#123;
 public boolean isWordInText(String word)&#123;
     return text.contains(word);
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>Now, our Book class works well, and we can store as many books as we like in our application. But, what good is storing the information if we can’t output the text to our console and read it?</p>
 <p>Let’s throw caution to the wind and add a print method:</p>
 <p>~<br>public class Book {<br>    &#x2F;&#x2F;…</p>
-<pre><code>void printTextToConsole()&#123;
+<div class="code-wrapper"><pre><code class="hljs">void printTextToConsole()&#123;
     // our code for formatting and printing the text
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>This code does, however, violate the single responsibility principle we outlined earlier. To fix our mess, we should implement a separate class that is concerned only with printing our texts:</p>
 <p>~<br>public class BookPrinter {</p>
-<pre><code>// methods for outputting text
+<div class="code-wrapper"><pre><code class="hljs">// methods for outputting text
 void printTextToConsole(String text)&#123;
     //our code for formatting and printing the text
 &#125;
@@ -160,7 +308,7 @@ void printTextToConsole(String text)&#123;
 void printTextToAnotherMedium(String text)&#123;
     // code for writing to any other location..
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>Awesome. Not only have we developed a class that relieves the Book of its printing duties, but we can also leverage our BookPrinter class to send our text to other media.</p>
 <p>Whether it’s email, logging, or anything else, we have a separate class dedicated to this one concern!</p>
@@ -169,35 +317,35 @@ void printTextToAnotherMedium(String text)&#123;
 <p>Let’s explore the concept further with a quick code example. As part of a new project, imagine we’ve implemented a Guitar class.</p>
 <p>It’s fully fledged and even has a volume knob:</p>
 <p>~<br>public class Guitar {</p>
-<pre><code>private String make;
+<div class="code-wrapper"><pre><code class="hljs">private String make;
 private String model;
 private int volume;
 
 //Constructors, getters &amp; setters
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>We launch the application, and everyone loves it. However, after a few months, we decide the Guitar is a little bit boring and could do with an awesome flame pattern to make it look a bit more ‘rock and roll’.</p>
 <p>At this point, it might be tempting to just open up the Guitar class and add a flame pattern – but who knows what errors that might throw up in our application.</p>
 <p>Instead, let’s stick to the open-closed principle and simply extend our Guitar class:</p>
 <p>~<br>public class SuperCoolGuitarWithFlames extends Guitar {</p>
-<pre><code>private String flameColor;
+<div class="code-wrapper"><pre><code class="hljs">private String flameColor;
 
 //constructor, getters + setters
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>By extending the Guitar class we can be sure that our existing application won’t be affected.</p>
 <h4 id="5-Liskov-Substitution-LSP"><a href="#5-Liskov-Substitution-LSP" class="headerlink" title="5. Liskov Substitution - LSP"></a>5. Liskov Substitution - LSP</h4><p>Next up on our list is Liskov substitution, which is arguably the most complex of the 5 principles. </p>
 <p>Simply put, <em><strong>if class A is a subtype of class B, then we should be able to replace B with A without disrupting the behavior of our program.</strong></em></p>
 <p>Let’s just jump straight to the code to help wrap our heads around this concept:</p>
 <p>~<br>public interface Vehicle {</p>
-<pre><code>void turnOnEngine();
+<div class="code-wrapper"><pre><code class="hljs">void turnOnEngine();
 void accelerate();
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>Above, we define a simple Vehicle interface with a couple of methods that all cars should be able to fulfill – turning on the engine, and accelerating forward.</p>
 <p>Let’s implement our interface and provide some code for the methods:</p>
 <p>~<br>public class Car implements Vehicle {</p>
-<pre><code>private Engine engine;
+<div class="code-wrapper"><pre><code class="hljs">private Engine engine;
 
 //Constructors, getters + setters
 
@@ -210,18 +358,18 @@ public void accelerate() &#123;
     //move forward!
     engine.powerOn(1000);
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>As our code describes, we have an engine that we can turn on, and we can increase the power. But wait, its 2020 and we are now using bikes as a vehicle too! </p>
 <p>~<br>public class Bike implements Vehicle {</p>
-<pre><code>public void turnOnEngine() &#123;
+<div class="code-wrapper"><pre><code class="hljs">public void turnOnEngine() &#123;
     throw new AssertionError(&quot;I don&#39;t have an engine!&quot;);
 &#125;
 
 public void accelerate() &#123;
     //this acceleration is crazy!
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>By throwing a bike without an engine into the mix, we are inherently changing the behavior of our program.<br>This is a blatant <em><strong>violation of Liskov substitution and is a bit harder to fix than our previous 2 principles.</strong></em></p>
 <p>One possible solution would be to rework our model into interfaces that take into account the engine-less state of our Vehicle.</p>
@@ -237,35 +385,35 @@ public void accelerate() &#123;
 <p>~<br>public interface BearPetter {<br>    void petTheBear();<br>}<br>~</p>
 <p>Now, thanks to interface segregation, we’re free to implement only the methods that matter to us:</p>
 <p>~<br>public class BearCarer implements BearCleaner, BearFeeder {</p>
-<pre><code>public void washTheBear() &#123;
+<div class="code-wrapper"><pre><code class="hljs">public void washTheBear() &#123;
     //I think we missed a spot...
 &#125;
 
 public void feedTheBear() &#123;
     //Tuna Tuesdays...
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>And finally, we can leave the dangerous stuff to the crazy people:</p>
 <p>~<br>public class CrazyPerson implements BearPetter {</p>
-<pre><code>public void petTheBear() &#123;
+<div class="code-wrapper"><pre><code class="hljs">public void petTheBear() &#123;
     //Good luck with that!
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <h4 id="7-Dependency-Inversion"><a href="#7-Dependency-Inversion" class="headerlink" title="7. Dependency Inversion"></a>7. Dependency Inversion</h4><p><em><strong>The principle of Dependency Inversion refers to the decoupling of software modules.<br>This way, instead of high-level modules depending on low-level modules, both will depend on abstractions.</strong></em></p>
 <p>To demonstrate this, let’s go old-school and bring to life a Windows 98 computer with code:</p>
 <p>~<br>public class Windows98Machine {}<br>~</p>
 <p>But what good is a computer without a monitor and keyboard? Let’s add one of each to our constructor so that every Windows98Computer we instantiate comes pre-packed with a Monitor and a StandardKeyboard:</p>
 <p>~<br>public class Windows98Machine {</p>
-<pre><code>private final StandardKeyboard keyboard;
+<div class="code-wrapper"><pre><code class="hljs">private final StandardKeyboard keyboard;
 private final Monitor monitor;
 
 public Windows98Machine() &#123;
     monitor = new Monitor();
     keyboard = new StandardKeyboard();
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>This code will work, and we’ll be able to use the <em><strong>StandardKeyboard</strong></em> and <em><strong>Monitor</strong></em> freely within our <em><strong>Windows98Computer</strong></em> class.<br>Problem solved? <em><strong>Not quite</strong></em>. By declaring the <em><strong>StandardKeyboard</strong></em> and <em><strong>Monitor</strong></em> with the new keyword, we’ve tightly coupled these 3 classes together.</p>
 <p>Not only does this make our Windows98Computer hard to test, but we’ve also lost the ability to switch out our <em><strong>StandardKeyboard</strong></em><br>class with a different one should the need arise. And we’re stuck with our <em><strong>Monitor</strong></em> class, too.</p>
@@ -273,14 +421,14 @@ public Windows98Machine() &#123;
 <p>~<br>public interface Keyboard { }<br>~</p>
 <p>And now by using <strong>Keyboard</strong> we can would allow <strong>Windows98Machine</strong> substitute any type of <strong>Keyboard</strong>  </p>
 <p>~<br>public class Windows98Machine{</p>
-<pre><code>private final Keyboard keyboard;
+<div class="code-wrapper"><pre><code class="hljs">private final Keyboard keyboard;
 private final Monitor monitor;
 
 public Windows98Machine(Keyboard keyboard, Monitor monitor) &#123;
     this.keyboard = keyboard;
     this.monitor = monitor;
 &#125;
-</code></pre>
+</code></pre></div>
 <p>}<br>~</p>
 <p>Here, we’re using the dependency injection pattern here to facilitate adding the Keyboard dependency into the Windows98Machine class.</p>
 <p>Let’s also modify our StandardKeyboard class to implement the Keyboard interface so that it’s suitable for injecting into the Windows98Machine class:</p>
@@ -288,134 +436,195 @@ public Windows98Machine(Keyboard keyboard, Monitor monitor) &#123;
 <p>Now our classes are decoupled and communicate through the Keyboard abstraction. If we want, we can easily switch out the type of keyboard in our machine with a different implementation of the interface. We can follow the same principle for the Monitor class.</p>
 <p>Excellent! We’ve decoupled the dependencies and are free to test our Windows98Machine with whichever testing framework we choose.</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/05/solid-principle/solid/" data-id="cl0e6xfsg00063c9k5zw9h2p6" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/03/05/structures/dfs/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Depth First Search - DFS
-        
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/05/solid-principle/lsp/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/05/structures/dfs/">
+                        <span class="hidden-mobile">Depth First Search - DFS</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2022/03/05/solid-principle/lsp/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/03/05/structures/dfs/">Depth First Search - DFS</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/05/solid-principle/solid/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/05/solid-principle/lsp/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/05/java-features/java8/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/05/footer/privacy/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
-  
-</aside>
-        
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 Mehrdad Karami<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
   </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
+
+  <!-- SCRIPTS -->
   
-    <a href="/" class="mobile-nav-link">Home</a>
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <script  src="/js/img-lazyload.js" ></script>
   
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 </body>
 </html>
