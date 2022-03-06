@@ -1,3 +1,6 @@
+---
+title: New Java8 Features
+---
 ![Java8](data/java-features/assets/java8.jpg)
 
 ### New Java8 Features

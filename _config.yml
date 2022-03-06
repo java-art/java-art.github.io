@@ -103,5 +103,19 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy: 
   type: git
-  repo: https://github.com/onlinejavaclass/onlinejavaclass.github.io
+  repo: https://github.com/onlinejavaclass/java-art.github.io
   branch: dev
+
+
+architecture:
+  enable: true
+  banner_img: /img/default.png
+  banner_img_height: 80
+  banner_mask_alpha: 0.3
+  subtitle:
+  tagcloud:
+    min_font: 15
+    max_font: 30
+    unit: px
+    start_color: "#BBBBEE"
+    end_color: "#337ab7"

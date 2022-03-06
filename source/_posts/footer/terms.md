@@ -1,7 +1,10 @@
+---
+title: terms and conditions
+---
 ### Terms and Conditions
 Last updated: April 17, 2019
 
-These Terms and Conditions (“Terms”, “Terms and Conditions”) govern your relationship with https://onlinejavaclass.com website (the “Service”) operated by **Mehrdad Karami** (“us”, “we”, or “our”).
+These Terms and Conditions (“Terms”, “Terms and Conditions”) govern your relationship with https://java-art.github.io website (the “Service”) operated by **Mehrdad Karami** (“us”, “we”, or “our”).
 
 Please read these Terms and Conditions carefully before using the Service.
 
